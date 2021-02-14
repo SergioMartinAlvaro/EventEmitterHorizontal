@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenidos a Lit Element</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-body">
+        <background-element></background-element>
+        <ground-element></ground-element>
+    </div>
+    <script src="src/EventEmitter/EventEmitter.js"></script>
+    <script src="src/EventEmitter/EventHandler.js"></script>
+    <script src="index.js" type="module"></script>
+    <script>
+        window.onresize = function() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container-body {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: stretch;
+}
+
+.flexStyle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.columnFlex {
+    align-content: stretch;
+    flex-direction: column;
+}
+
+.rowFlex {
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
