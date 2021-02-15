@@ -3,7 +3,7 @@
 document.body.onkeydown = function(e){
     if(e.key === "ArrowRight") {
         window.EE.emit("SM:move-yoli");
-        window.EE.emit("SM:move-ground");
+       // window.EE.emit("SM:move-ground");
         // Generar relieve
         // Disparar Sergio
         // Cambiar fondo

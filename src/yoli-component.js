@@ -12,6 +12,12 @@ export class Yoli extends LitElement {
 
     static get styles() {
         return css`
+            .yoli {
+                height: 10vh;
+                width: 100px;
+                background: red;
+                margin-left: var(--left-yoli);
+            }
         `;
     }
 
@@ -20,8 +26,9 @@ export class Yoli extends LitElement {
     }
 
     moveYoli() {
-       // !this.yolimari ? this.yolimari = this.shadowRoot.querySelector(".yoli") : this.yolimari;
-       // this.yolimari.style.setProperty('--left-yoli', (this.left)+"px");
+        !this.yolimari ? this.yolimari = this.shadowRoot.querySelector(".yoli") : this.yolimari;
+        this.left+=3;
+        this.yolimari.style.setProperty('--left-yoli', (this.left)+"px");
     }
 
 
