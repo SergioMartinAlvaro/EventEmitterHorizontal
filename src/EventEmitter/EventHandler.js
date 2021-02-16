@@ -10,6 +10,10 @@ document.body.onkeydown = function(e){
     }
 };
 
+window.EE.on("SM:completeTravel",() => {
+    window.EE.emit("SM:changeBackground", {});
+})
+
 /*setInterval(function() {
     window.EE.emit("SM:move-ground");
 }, 100)*/

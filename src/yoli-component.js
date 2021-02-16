@@ -29,6 +29,15 @@ export class Yoli extends LitElement {
         !this.yolimari ? this.yolimari = this.shadowRoot.querySelector(".yoli") : this.yolimari;
         this.left+=3;
         this.yolimari.style.setProperty('--left-yoli', (this.left)+"px");
+        this.restartPosition();
+    }
+
+    restartPosition() {
+        console.log(this.left)
+        if(this.left >= 100) {
+            window.EE.emit("SM:completeTravel");
+            this.left = 0;
+        }
     }
 
 

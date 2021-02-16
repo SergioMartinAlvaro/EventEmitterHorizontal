@@ -30,16 +30,36 @@ export class Background extends LitElement {
 
     static get properties() {
         return {
-            
+            escenarios: {type: Array},
+            currentScenario: {type: String},
+            escenarioTag: {type: String}
         }
+    }
+
+    constructor() {
+        super();
+        this.currentScenario = -1;
+        this.escenarioTag = "";
+        this.escenarios = ["lavega-element", "patones-element", "barco-element"];
+        window.EE.on('SM:changeBackground', this.changeBackground.bind(this));
+    }
+
+
+
+    changeBackground() {
+        if(this.currentScenario <= this.escenarios.length) {
+            this.currentScenario++;
+            this.escenarioTag = this.escenarios[this.currentScenario];
+        }
+        this.escenarioTag = document.createElement(this.escenarioTag);
+        this.requestUpdate();
     }
 
     render() {
         return html`
             <div class="background">
-               <!--<patones-element></patones-element>-->
-               <div class="bg">
-                    <lavega-element></lavega-element>
+               <div class="bg" id="bg">
+                ${this.escenarioTag}
                </div>
                <div class="yoli">
                     <yoli-element></yoli-element>
