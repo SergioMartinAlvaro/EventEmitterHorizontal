@@ -7,13 +7,13 @@ export class Background extends LitElement {
             .background {
                 height: 90vh;
                 width: 100%;
-                background: white;
+                background: transparent;
                 display: block;
             }
 
             .bg {
                 position: relative;
-                z-index: 9;
+                z-index: 0;
                 height: 80vh;
                 width: 100%;
             }
@@ -30,9 +30,7 @@ export class Background extends LitElement {
 
     static get properties() {
         return {
-            escenarios: {type: Array},
-            currentScenario: {type: String},
-            escenarioTag: {type: String}
+            escenarioTag: {type: String},
         }
     }
 
@@ -40,19 +38,27 @@ export class Background extends LitElement {
         super();
         this.currentScenario = -1;
         this.escenarioTag = "";
-        this.escenarios = ["lavega-element", "patones-element", "barco-element"];
-        window.EE.on('SM:changeBackground', this.changeBackground.bind(this));
+        this.escenarios = ["lavega-element", "patones-element", "segovia-element", "barco-element", "tenerife-element", "oporto-element", "asturias-element"];
+        this.setBackground();
+        window.EE.on('SM:changeBackground', this.setBackground.bind(this));
     }
 
+    attributeChangedCallback(name, oldVal, newVal) {
+        console.log('attribute change: ', name, newVal);
+        super.attributeChangedCallback(name, oldVal, newVal);
+    }
 
+    disconnectedCallback() {
+        super.disconnectedCallback();
+      }
 
-    changeBackground() {
+    setBackground() {
         if(this.currentScenario <= this.escenarios.length) {
             this.currentScenario++;
             this.escenarioTag = this.escenarios[this.currentScenario];
+            window.escenario = this.escenarioTag;
         }
         this.escenarioTag = document.createElement(this.escenarioTag);
-        this.requestUpdate();
     }
 
     render() {
@@ -61,7 +67,7 @@ export class Background extends LitElement {
                <div class="bg" id="bg">
                 ${this.escenarioTag}
                </div>
-               <div class="yoli">
+                <div class="yoli">
                     <yoli-element></yoli-element>
                </div>
             </div>

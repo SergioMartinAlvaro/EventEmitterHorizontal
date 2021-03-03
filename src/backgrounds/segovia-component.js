@@ -1,6 +1,6 @@
 import { LitElement, html, css} from 'lit-element';
 
-export class BarcoAvila extends LitElement {
+export class Segovia extends LitElement {
 
 
     static get properties() {
@@ -21,7 +21,7 @@ export class BarcoAvila extends LitElement {
             width: 100%;
             position: absolute;
             z-index: 1;
-            bottom: var(--up-field3);
+            bottom: -105px
         }
 
         .focus3 img{
@@ -61,42 +61,28 @@ export class BarcoAvila extends LitElement {
     }
 
     init() {
-        console.log(this.initialValueField2);
         this.initialValue = -302;
         this.initialPosition = this.initialValue + "px";
         this.style.setProperty('--up-field1', this.initialPosition);
+        window.EE.on("SEG:upF1", this.increaseBackground.bind(this));
 
         this.initialValueField2 = -302;
         this.initialPositionField2 = this.initialValueField2 + "px";
         this.style.setProperty('--up-field2', this.initialPositionField2);
-
-        this.initialValueField3 = -302;
-        this.initialPositionField3 = this.initialValueField3 + "px";
-        this.style.setProperty('--up-field3', this.initialPositionField3);
-
-        window.EE.on("BAR:upF1", this.increaseBackground.bind(this));
     }
 
     attributeChangedCallback(name, oldVal, newVal) {
         super.attributeChangedCallback(name, oldVal, newVal);
     }
 
-
     increaseBackground() {
-
-        if(this.initialValueField3 < -102) {
-            this.initialValueField3++;
-            this.initialPositionField3 = this.initialValueField3 + "px";
-            this.style.setProperty('--up-field3', this.initialPositionField3);
-        }
-
-        if(this.initialValueField2 < -102 && this.initialValueField3 > -250) {
+        if(this.initialValueField2 < -102) {
             this.initialValueField2++;
             this.initialPositionField2 = this.initialValueField2 + "px";
             this.style.setProperty('--up-field2', this.initialPositionField2);
         }
 
-        if(this.initialValue < -102 && this.initialValueField2 > -250) {
+        if(this.initialValue < -102 && this.initialValueField2 > -150) {
             this.initialValue++;
             this.initialPosition = this.initialValue + "px";
             this.style.setProperty('--up-field1', this.initialPosition);
@@ -107,17 +93,14 @@ export class BarcoAvila extends LitElement {
         return html` 
             <div class="container">
             <div class="focus1">
-                    <img src="img/barco/field-1.png" />
+                    <img src="img/segovia/field-1.png" />
                 </div>
                 <div class="focus2">
-                    <img src="img/barco/field-2.png" />
-                </div>
-                <div class="focus3">
-                    <img src="img/barco/field-3.png" />
+                    <img src="img/segovia/field-2.png" />
                 </div>
             </div>
 
         `;
     }
 }
-customElements.define('barco-element', BarcoAvila);
+customElements.define('segovia-element', Segovia);

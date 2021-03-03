@@ -1,6 +1,6 @@
 import { LitElement, html, css} from 'lit-element';
 
-export class BarcoAvila extends LitElement {
+export class Oporto extends LitElement {
 
 
     static get properties() {
@@ -74,7 +74,7 @@ export class BarcoAvila extends LitElement {
         this.initialPositionField3 = this.initialValueField3 + "px";
         this.style.setProperty('--up-field3', this.initialPositionField3);
 
-        window.EE.on("BAR:upF1", this.increaseBackground.bind(this));
+        window.EE.on("OPO:upF1", this.increaseBackground.bind(this));
     }
 
     attributeChangedCallback(name, oldVal, newVal) {
@@ -102,22 +102,18 @@ export class BarcoAvila extends LitElement {
             this.style.setProperty('--up-field1', this.initialPosition);
         }
     }
-
     render() {
         return html` 
             <div class="container">
             <div class="focus1">
-                    <img src="img/barco/field-1.png" />
+                    <img src="img/oporto/field-1.png" />
                 </div>
                 <div class="focus2">
-                    <img src="img/barco/field-2.png" />
-                </div>
-                <div class="focus3">
-                    <img src="img/barco/field-3.png" />
+                    <img src="img/oporto/field-2.png" />
                 </div>
             </div>
 
         `;
     }
 }
-customElements.define('barco-element', BarcoAvila);
+customElements.define('oporto-element', Oporto);
